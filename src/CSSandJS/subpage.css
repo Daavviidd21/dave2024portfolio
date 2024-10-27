@@ -93,6 +93,13 @@
   transition: transform 0.5s;
 }
 
+.btn-web a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #eee;
+}
+
 .btn-web i {
   margin-right: 5px;
 }
@@ -266,6 +273,17 @@
   .text-column h3 {
     font-size: 2rem;
     margin: 1rem auto;
+  }
+  .btn-web {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 1rem;
+    margin: 2rem;
+  }
+
+  .btn-web a {
+    text-decoration: none;
+    font-size: 1.4rem;
   }
 }
 
