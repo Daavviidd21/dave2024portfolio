@@ -39,27 +39,36 @@ const allLinks = document.querySelectorAll("a:link");
 
 allLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
-    e.preventDefault();
     const href = link.getAttribute("href");
 
-    // Scroll back to top
-    if (href === "#")
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    //Scroll to other links
-    if (href !== "#" && href.startsWith("#")) {
-      const sectionEL = document.querySelector(href);
-      sectionEL.scrollIntoView({ behavior: "smooth" });
-    }
+    // Check if the link is an internal link (i.e., starts with #)
+    if (href.startsWith("#")) {
+      // Prevent default behavior for smooth scroll
+      e.preventDefault();
 
-    // Close mobile nav
-    if (link.classList.contains("main-nav-link"))
-      headerEl.classList.toggle("nav-open");
+      // Scroll back to top
+      if (href === "#") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Scroll to other links within the page
+      if (href !== "#" && href.startsWith("#")) {
+        const sectionEL = document.querySelector(href);
+        sectionEL.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Close mobile nav
+      if (link.classList.contains("main-nav-link"))
+        headerEl.classList.toggle("nav-open");
+    } else {
+      // If it's an external link, allow the default behavior (redirect)
+      return;
+    }
   });
 });
-
 // arrow up
 
 window.addEventListener("scroll", function () {
